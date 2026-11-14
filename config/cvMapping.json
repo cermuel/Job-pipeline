@@ -1,24 +1,24 @@
 {
-  "_comment": "Used by lib/scorer.js to decide which of the 3 resumes to use for a job. Pass 1 is a title keyword match. Pass 2 cross-checks with skill-keyword overlap; if they disagree, the job is flagged for manual review instead of a silent guess.",
+  "_comment": "Used by lib/scorer.js to decide which of the 3 resumes to use for a job. Pass 1 is a title keyword match. Pass 2 cross-checks with skill-keyword overlap; if they disagree, the job is flagged for manual review instead of a silent guess. The resumeFile names must match the PDFs in resumes/.",
 
   "react_native": {
-    "resumeFile": "Daniel_Chimezie_CV_React_Native_Developer.pdf",
-    "titleKeywords": ["react native", "mobile developer", "mobile application", "ios developer", "android developer", "expo", "flutter"],
-    "skillKeywords": ["react native", "expo", "swift", "kotlin", "app store", "google play", "mobile app"]
+    "resumeFile": "Ngene_Samuel_Obasi_CV_React_Native.pdf",
+    "titleKeywords": ["react native", "mobile developer", "mobile engineer", "mobile application", "expo"],
+    "skillKeywords": ["react native", "expo", "app store", "google play", "mobile app", "ios", "android"]
   },
 
   "product_engineer": {
-    "resumeFile": "Daniel_Chimezie_CV_Product_Engineer.pdf",
-    "titleKeywords": ["product engineer", "founding engineer", "full stack", "full-stack", "fullstack"],
-    "skillKeywords": ["full stack", "end to end", "ownership", "0 to 1", "ship fast", "founding team", "generalist"]
+    "resumeFile": "Ngene_Samuel_Obasi_CV_Full_Stack.pdf",
+    "titleKeywords": ["full stack", "full-stack", "fullstack", "product engineer", "founding engineer", "laravel", "php", "backend", "back-end"],
+    "skillKeywords": ["full stack", "node.js", "nodejs", "express", "nestjs", "laravel", "php", "postgresql", "prisma", "drizzle", "redis", "bullmq", "api design", "end to end"]
   },
 
   "frontend_engineer": {
-    "resumeFile": "Daniel_Chimezie_CV_Frontend_Engineer.pdf",
-    "titleKeywords": ["frontend", "front-end", "front end", "react developer", "ui engineer", "web developer"],
-    "skillKeywords": ["react", "next.js", "typescript", "tailwind", "css", "web application"],
+    "resumeFile": "Ngene_Samuel_Obasi_CV_Frontend.pdf",
+    "titleKeywords": ["frontend", "front-end", "front end", "react developer", "vue", "nuxt", "next.js", "ui engineer", "web developer"],
+    "skillKeywords": ["react", "next.js", "vue", "nuxt", "typescript", "tailwind", "redux", "pinia", "css", "design system", "web application"],
     "isDefault": true
   },
 
-  "notes": "frontend_engineer is the default/primary resume. Edit the keyword lists any time to improve matching as you see real results."
+  "notes": "frontend_engineer is the default resume. The key product_engineer is kept from the original repo so existing sheet rows still work; it now means your full-stack CV. Edit the keyword lists any time as you see real results."
 }

@@ -18,7 +18,7 @@ const STATUS_COLOR = {
 const CV_LABEL = {
   frontend_engineer: "Frontend CV",
   react_native: "React Native CV",
-  product_engineer: "Product CV",
+  product_engineer: "Full-stack CV",
 };
 
 const TABS = [
@@ -256,7 +256,7 @@ export default function Dashboard() {
       <div className="pageHead">
         <div>
           <h1 className="wordmark">Job Pipeline</h1>
-          <div className="tagline">Daniel&rsquo;s application tracker</div>
+          <div className="tagline">Samuel&rsquo;s application tracker</div>
         </div>
         <div className="headActions">
           <button className="ghostBtn" onClick={loadJobs}>

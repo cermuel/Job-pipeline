@@ -20,13 +20,28 @@ test("countries on your list are accepted, abbreviations included", () => {
   }
 });
 
-test("countries below your pay floor are rejected", () => {
+test("countries below the pay floor are rejected", () => {
+  for (const place of ["Mumbai, India", "Manila, Philippines", "Moscow, Russia"]) {
+    assert.equal(isLocationEligible(place).ok, false, place);
+  }
+});
+
+test("your home country, its cities and African regions are accepted", () => {
   for (const place of [
     "Lagos, Nigeria",
-    "Mumbai, India",
-    "Manila, Philippines",
+    "Abuja",
+    "Remote, Nigeria",
+    "Remote - Africa",
+    "Remote, 59 countries incl. Nigeria",
+    "EMEA",
   ]) {
-    assert.equal(isLocationEligible(place).ok, false, place);
+    assert.equal(isLocationEligible(place).ok, true, place);
+  }
+});
+
+test("a job tied to your home country is not flagged as restricted", () => {
+  for (const place of ["Remote, Nigeria", "Lagos, Nigeria", "Remote - Africa"]) {
+    assert.equal(isLocationRestricted(place), false, place);
   }
 });
 
@@ -87,12 +102,14 @@ test("remote-only boards are always remote, even with just a country name", () =
 test("filterJobs drops ineligible countries and adds the restricted flag", () => {
   const out = filterJobs([
     { source: "ashby", title: "Dev", location: "Remote - USA" },
+    { source: "ashby", title: "Dev", location: "Mumbai, India" },
     { source: "ashby", title: "Dev", location: "Lagos, Nigeria" },
     { source: "ashby", title: "Dev", location: "Remote, EMEA" },
   ]);
-  assert.equal(out.length, 2);
+  assert.equal(out.length, 3);
   assert.equal(out[0].locationRestricted, true);
   assert.equal(out[1].locationRestricted, false);
+  assert.equal(out[2].locationRestricted, false);
 });
 
 test("deduplicate removes known links, repeats and jobs with no link", () => {

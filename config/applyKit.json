@@ -1,44 +1,49 @@
 {
-  "_comment": "Everything the dashboard's Apply kit lets you copy. Edit any value, save, and refresh the dashboard (no restart needed). Lines starting with EDIT ME are placeholders: replace them with your real answer. Your phone number is left out on purpose; add one {label, value} line to profile if you want it.",
+  "_comment": "Everything the dashboard's Apply kit lets you copy. Edit any value, save, and refresh the dashboard (no restart needed). Lines starting with EDIT ME are placeholders: replace them with your real answer. This repo is public, so your phone number and salary are left out on purpose: keep real numbers in a private copy.",
 
   "profile": [
-    { "label": "Full name", "value": "Daniel Chimezie" },
-    { "label": "Email", "value": "dannydotdev@gmail.com" },
-    { "label": "LinkedIn", "value": "https://linkedin.com/in/0xdaniiel2" },
-    { "label": "GitHub", "value": "https://github.com/0xDaniiel" },
-    { "label": "Portfolio", "value": "https://0xdaniiel.space" }
+    { "label": "Full name", "value": "Ngene Samuel Obasi" },
+    { "label": "Email", "value": "samuelobasi2005@gmail.com" },
+    { "label": "LinkedIn", "value": "https://linkedin.com/in/ngene-samuel-obasi" },
+    { "label": "GitHub", "value": "EDIT ME: https://github.com/your-username" },
+    { "label": "Portfolio", "value": "https://cermuel.dev" },
+    { "label": "Projects", "value": "https://cermuel.dev/projects" }
   ],
 
   "answers": [
     {
       "label": "Where are you based?",
-      "value": "Nigeria (UTC+1). I work remotely."
+      "value": "Abuja, Nigeria (WAT, UTC+1, the same working hours as Central Europe). I work remotely."
     },
     {
       "label": "Work authorization / how you work",
-      "value": "I am based in Nigeria and work as an independent contractor (B2B). I can invoice through Wise, Payoneer or Deel."
+      "value": "I am a Nigerian citizen living in Nigeria, with the right to work here. For foreign companies I can work as an independent contractor (B2B) or through an employer of record such as Deel or Remote, and invoice through Wise, Payoneer or Deel."
     },
     {
-      "label": "Availability / start date",
-      "value": "Immediately"
+      "label": "Availability / notice period",
+      "value": "2 weeks."
     },
     {
       "label": "Salary expectation",
-      "value": "$2500/month."
+      "value": "EDIT ME: your monthly figure in USD"
     },
     {
       "label": "Years of experience",
-      "value": "5+ years building production web and mobile products with React, TypeScript, Next.js and React Native."
+      "value": "4 years building production web and mobile products with TypeScript, Next.js, React, Vue/Nuxt, Node.js and Laravel."
     },
     {
       "label": "Full-time or contract?",
       "value": "Open to both full-time and long-term contract roles."
+    },
+    {
+      "label": "Why this stack?",
+      "value": "I work in React/Next.js and Vue 3/Nuxt 3 daily, and build the backends too (Node.js, NestJS, Express, Laravel, PostgreSQL, Redis, BullMQ). I can own a feature from database to UI."
     }
   ],
 
   "summaries": {
-    "frontend_engineer": "Frontend Software Engineer with 5+ years of experience building production web applications in React, TypeScript, and Next.js. Delivered measurable performance gains of 25 to 60 percent faster load times, shipped internationalized (i18n) products for European clients, and built pixel accurate interfaces across marketplace, real estate, and fintech adjacent platforms.",
-    "react_native": "Mobile Application Developer with 5+ years of frontend experience, including 2+ years building production React Native (Expo) apps end to end, from concept to App Store and Google Play release. Shipped real time chat, wallet, and KYC flows for a fintech adjacent hiring marketplace and took a productivity app to both app stores.",
-    "product_engineer": "Product minded Software Engineer with 5+ years shipping web and mobile products end to end, from idea to release to paying users. Founded a web development agency, took a productivity app to both app stores, and built a lead generation tool now used by 13K+ people."
+    "frontend_engineer": "Frontend-focused software engineer with 4 years of experience building web and mobile products, including a savings and loans fintech app, admin dashboards and data-heavy internal tools. Builds in Vue 3 and Nuxt 3 with the Composition API, and in React and Next.js. Built a Next.js and Redux dashboard serving 100,000+ users, and real-time calls and chat with Socket.IO and MediaSoup.",
+    "react_native": "Frontend and mobile engineer with 4 years of experience, including React Native and Expo work on Adashe, a savings, loans and contributions app for 3,000+ users, a payroll and HR platform shipped on web and mobile, and an event invitation app with real-time RSVPs and notifications.",
+    "product_engineer": "Full-stack software engineer with 4 years of experience shipping products end to end: Next.js, React and Vue/Nuxt on the frontend, Node.js, NestJS, Express and Laravel on the backend, with PostgreSQL, Prisma, Drizzle, Redis and BullMQ. Built Anissa, a project-management platform with background automations and granular permissions, and Cally, a scheduling platform with calendar sync and double-booking protection."
   }
 }

@@ -1,20 +1,21 @@
 {
-  "_comment": "Countries where mid-level developer pay, converted to USD, clears $28,000/year ($2,333/month). Static, manually researched list, not a live feed. Review every few months. A posting with no specific country requirement ('Remote, Worldwide') always passes regardless of this list.",
+  "_comment": "Where a job can be based and still be worth applying to from Abuja. A job passes if its location names an eligible country, says it is open to Africa, EMEA or worldwide, or has no location at all. Countries are ones where mid-level developer pay clears the floor below, plus Nigeria, because foreign companies hiring 'remote, Nigeria' pay in dollars. Review every few months.",
   "monthly_floor_usd": 2333,
   "annual_floor_usd": 28000,
+  "home_country": "Nigeria",
   "eligible_countries": [
+    "Nigeria",
     "United States", "Switzerland", "Singapore", "Australia", "Israel",
     "United Arab Emirates", "Canada", "Denmark", "Netherlands", "Germany",
     "Qatar", "Japan", "Norway", "United Kingdom", "Sweden", "South Korea",
-    "Spain", "China", "Portugal", "Argentina", "Romania", "Poland",
-    "Malaysia", "Brazil", "Vietnam", "Mexico", "South Africa", "Bulgaria",
-    "Ukraine"
+    "Spain", "Portugal", "Romania", "Poland", "Hungary", "France", "Ireland",
+    "Belgium", "Finland", "Estonia", "South Africa"
   ],
+  "open_regions": ["africa", "emea", "europe, middle east and africa", "west africa", "sub-saharan africa"],
   "excluded_with_reason": {
-    "Russia": "Clears the salary floor but most sources this system pulls from don't process hires or payments there due to sanctions.",
-    "India": "Only MNC/FAANG-adjacent roles clear the floor; typical local pay is well under it, and job data doesn't label 'MNC vs local' cleanly.",
-    "Nigeria": "Local pay is well under the floor. Not a target market for local-currency roles.",
+    "Russia": "Most sources this system pulls from don't process hires or payments there due to sanctions.",
+    "India": "Only MNC/FAANG-adjacent roles clear the floor, and those usually require living in India.",
     "Philippines": "Typical pay is well under the floor."
   },
-  "notes": "Edit eligible_countries to add/remove a country. Matching is case-insensitive substring matching, see lib/filters.js SYNONYMS for abbreviation handling (UK, US, UAE, Dubai, etc)."
+  "notes": "A job tied to another country (\"Remote - Canada\") still passes because some of these companies do hire contractors abroad, but it is flagged as restricted in the Notes so you can check before applying. Matching is case-insensitive; see SYNONYMS in lib/filters.js for abbreviations (UK, US, UAE, Lagos, Abuja)."
 }

@@ -43,6 +43,21 @@ test("jobs that are not a fit fall below the minimum score", () => {
   }
 });
 
+test("Vue, Nuxt, Laravel and Node roles pass, they are your stack", () => {
+  const vue = "We build with Vue 3, Nuxt, TypeScript, Pinia and Tailwind. ".repeat(4);
+  const laravel = "Laravel, PHP, PostgreSQL, Redis and Vue.js on the frontend. ".repeat(4);
+  const node = "Node.js, NestJS, TypeScript, PostgreSQL, Redis and BullMQ. ".repeat(4);
+  assert.ok(computeMatchScore(job("Senior Vue Developer", { description: vue })) >= MINIMUM);
+  assert.ok(computeMatchScore(job("Frontend Engineer (Nuxt)", { description: vue })) >= MINIMUM);
+  assert.ok(computeMatchScore(job("Laravel Developer", { description: laravel })) >= MINIMUM);
+  assert.ok(computeMatchScore(job("Backend Engineer (Node.js)", { description: node })) >= MINIMUM);
+});
+
+test("a Vue role uses the frontend CV and a Laravel role the full-stack CV", () => {
+  assert.equal(pickCvVersion(job("Senior Vue Developer")).cvKey, "frontend_engineer");
+  assert.equal(pickCvVersion(job("Laravel Developer")).cvKey, "product_engineer");
+});
+
 test("a full-stack role that mentions backend is not rejected", () => {
   assert.ok(
     computeMatchScore(job("Senior Full Stack Engineer (Backend heavy)")) >=
@@ -88,9 +103,20 @@ test("jobs with none of your core skills cannot pass on bonuses alone", () => {
 
 test("one company cannot fill the list: at most 3 per company", () => {
   const many = Array.from({ length: 8 }, (_, i) =>
-    job("Frontend Engineer", { company: "supabase", link: "l" + i }),
+    job(`Frontend Engineer ${i + 1}`, { company: "supabase", link: "l" + i }),
   );
   assert.equal(scoreAll(many, MINIMUM).length, 3);
+});
+
+test("the same title posted many times by one company counts once", () => {
+  const copies = Array.from({ length: 5 }, (_, i) =>
+    job("Frontend Desktop Engineer", { company: "Tether", link: "t" + i }),
+  );
+  const others = [
+    job("Frontend Engineer", { company: "Tether", link: "x" }),
+    job("React Native Developer", { company: "Tether", link: "y" }),
+  ];
+  assert.equal(scoreAll([...copies, ...others], MINIMUM).length, 3);
 });
 
 test("results come back best match first", () => {

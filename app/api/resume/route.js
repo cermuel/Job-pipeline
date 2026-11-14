@@ -1,20 +1,16 @@
 // app/api/resume/route.js
 // Downloads one of your 3 CVs: /api/resume?cv=frontend_engineer
-// Only the three known names work, so no other file can be requested.
+// Only CV names listed in config/cvMapping.json work, so no other file can be requested.
 
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { RESUME_FILE_BY_CV, DEFAULT_CV } from "../../../lib/resumes.js";
 
-const FILES = {
-  frontend_engineer: "Daniel_Chimezie_CV_Frontend_Engineer.pdf",
-  react_native: "Daniel_Chimezie_CV_React_Native_Developer.pdf",
-  product_engineer: "Daniel_Chimezie_CV_Product_Engineer.pdf",
-};
 
 export async function GET(request) {
-  const cv = new URL(request.url).searchParams.get("cv") || "frontend_engineer";
-  const fileName = FILES[cv];
+  const cv = new URL(request.url).searchParams.get("cv") || DEFAULT_CV;
+  const fileName = Object.hasOwn(RESUME_FILE_BY_CV, cv) ? RESUME_FILE_BY_CV[cv] : null;
   if (!fileName) {
     return NextResponse.json({ error: "Unknown CV" }, { status: 400 });
   }

@@ -2,15 +2,37 @@
 
 A Next.js app that finds remote developer jobs every day, filters them by
 country, scores them against your three CVs, logs everything in a Google
-Sheet, and gives you a dashboard to approve and apply from. Built for Daniel
-Chimezie. Runs on your PC for testing and on a RackNerd VPS for the daily run.
+Sheet, and gives you a dashboard to approve and apply from. Forked from
+[0xDaniiel/Job-pipeline](https://github.com/0xDaniiel/Job-pipeline) and
+tailored for Ngene Samuel Obasi, a Next.js, Vue/Nuxt, Node and Laravel engineer
+in Abuja, Nigeria. Runs on your PC for testing and on a VPS for the daily run.
+
+## What this fork changes
+
+- **Your stack scores as a fit.** Vue, Nuxt, Laravel, PHP, NestJS and Express
+  count as core skills. The original treated Vue and PHP jobs as wrong-stack.
+  Backend roles on your stack ("Backend Engineer (Node.js)") are no longer
+  penalised.
+- **Nigeria-based remote jobs pass the filter.** Postings for Nigeria, Lagos,
+  Abuja, Africa or EMEA are kept, and are not flagged as restricted for you.
+- **More sources that hire in Nigeria.** Himalayas now also searches jobs open
+  to Nigeria by keyword. New Recruitee (Tether) and Workable (Kuda, FairMoney
+  and others) fetchers. BambooHR jobs now include descriptions, so they can
+  score (before, they never passed). SEEK (Australia and New Zealand) is off.
+- **A target company list** of teams that hire in Nigeria, Africa, EMEA or
+  worldwide, or build on your stack: `config/companies.json`.
+- **Your three CVs** (frontend, full-stack, React Native) in `resumes/`, without
+  your phone number since this repo is public. CV file names now live only in
+  `config/cvMapping.json`.
+- **One company, one slot per title.** Companies that post the same job once
+  per country no longer fill your list with copies.
 
 ## How it works
 
 ```
 cron (7am daily)  ->  POST /api/run
                          |
-   1. lib/fetchers/      pull jobs from 9 sources
+   1. lib/fetchers/      pull jobs from 10 sources
    2. lib/filters.js     keep eligible countries, drop duplicates
    3. lib/scorer.js      score each job, pick the right CV
    4. lib/sheets.js      write the best new matches to the sheet
@@ -48,9 +70,9 @@ are ever submitted for you; web forms are always submitted by you.
 
 | File             | What it does                                                                   |
 | ---------------- | ------------------------------------------------------------------------------ |
-| `countries.json` | Countries where mid-level developer pay clears $28K a year.                    |
-| `companies.json` | Company names checked on Greenhouse, Lever, Ashby, BambooHR.                   |
-| `cvMapping.json` | Title and skill keywords that choose between your 3 CVs.                       |
+| `countries.json` | Your home country, open regions, and countries where pay clears $28K a year. |
+| `companies.json` | Companies checked on Greenhouse, Lever, Ashby, BambooHR, Recruitee, Workable.  |
+| `cvMapping.json` | Your 3 CV files, and the keywords that choose between them.                    |
 | `applyKit.json`  | Your details and saved answers for the Apply kit. Replace the `EDIT ME` lines. |
 
 ### `app/`
@@ -78,6 +100,7 @@ are ever submitted for you; web forms are always submitted by you.
 | `mailer.js`     | Daily digest and follow-up emails.                             |
 | `autoApply.js`  | Sends one application email with the right CV attached.        |
 | `loadJson.js`   | Loads the config files.                                        |
+| `resumes.js`    | Maps each CV name to its PDF, from `cvMapping.json`.           |
 | `fetchers/`     | One file per job source, plus `index.js` that runs them all.   |
 
 ### `scripts/`
@@ -88,7 +111,7 @@ are ever submitted for you; web forms are always submitted by you.
 
 ### Other
 
-`resumes/` holds your 3 CV PDFs. `cron/` holds the scripts that call `/api/run`
+`resumes/` holds your 3 CV PDFs (frontend, full-stack, React Native). `cron/` holds the scripts that call `/api/run`
 daily. `logs/` holds the daily run log.
 
 ## Settings (`.env.local`)
@@ -170,6 +193,9 @@ Restart `pnpm dev` after changing the list, because the fetchers read it at star
 - Country matching is text based and can miss unusual wording. Extend
   `SYNONYMS` in `lib/filters.js` when it does.
 - Salaries are not read from postings, so the sheet shows "Not listed".
+- Some companies with good roles for you (Paystack, PiggyVest, Raenest,
+  Juicyway, Curacel, Cal.com) run their own careers pages, so no fetcher
+  covers them yet. Check those by hand.
 - Email detection can pick the wrong address. Check the address on the
   dashboard card before approving.
 - LinkedIn and Indeed are not sources: neither offers individual API access.

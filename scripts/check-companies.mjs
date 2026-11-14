@@ -41,6 +41,14 @@ const BOARDS = {
     url: `https://${s}.bamboohr.com/careers/list`,
     count: (d) => (d.result || []).length,
   }),
+  recruitee: (s) => ({
+    url: `https://${s}.recruitee.com/api/offers/`,
+    count: (d) => (d.offers || []).length,
+  }),
+  workable: (s) => ({
+    url: `https://apply.workable.com/api/v1/widget/accounts/${s}`,
+    count: (d) => (d.jobs || []).length,
+  }),
 };
 
 async function check(board, slug) {
